@@ -1,0 +1,147 @@
+main {
+    margin-top: 4rem;
+}
+
+/* Class Selectors */
+
+.background {
+    background: url(../images/plans-background.jpg);
+    background-size: cover;
+    -webkit-filter: blur(3px) grayscale(70%);
+            filter: blur(3px) grayscale(70%);
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    z-index: -1;
+}
+
+.plan {
+    background: lightgreen;
+    width: 100%;
+    margin: 1rem 0px;
+    position: relative;
+}
+
+.plan a {
+    text-decoration: none;
+    color: #2f3640;
+    display: block;
+    padding: 2rem;
+}
+
+.plan-title__secondary {
+    color: grey;
+}
+
+.plan-content {
+    background: #f5f6fa;
+    border: 1px solid grey;
+    padding: 1rem;
+    font-size: 1rem;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 700;
+    text-shadow: 3px 3px 4px lightgray;
+}
+
+.clearfix {
+    clear: both;
+}
+
+.plan-badge {
+    position: absolute;
+    margin: 0rem;
+    top: 0;
+    right: 0;
+    font-size: 0.8rem;
+    color: #f5f6fa;
+    background: #ff5252;
+    padding: 0.5rem;
+}
+
+#plan-plus {
+    background: rgba(213, 255, 220, 0.95);
+    border-left: none;
+}
+
+#plan-free {
+    background: rgba(234, 252, 237, 0.95);
+    float: right;
+    border-right: none;
+}
+
+#plan-premium {
+    background: darkgreen;
+    border-left: none;
+}
+
+#plan-premium .plan-title {
+    color: #f5f6fa;
+}
+
+#plan-premium .plan-title__secondary {
+    color: #bbbbbb;
+}
+
+@media (min-width: 40rem) {
+    .plan {
+        width: 80%;
+        border: 3px solid darkgreen;
+        overflow: hidden;
+    }
+    .plan-badge {
+        position: absolute;
+        top: 0;
+        right: 0;
+        font-size: 0.8rem;
+        color: #f5f6fa;
+        background: #ff5252;
+        padding: 0.5rem;
+        width: 12rem;
+        text-align: center;
+        -webkit-transform: rotateZ(45deg) translateX(3.3rem) translateY(-0.5rem);
+            -ms-transform: rotate(45deg) translateX(3.3rem) translateY(-0.5rem);
+                transform: rotateZ(45deg) translateX(3.3rem) translateY(-0.5rem);
+    }
+    .plan:hover,
+    .plan:active {
+        border: 3px solid #ff5252;
+        -webkit-box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+                box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        -webkit-animation: move-up 0.3s forwards;
+                animation: move-up 0.3s forwards;
+    }
+    #plan-free:hover {
+        -webkit-box-shadow: -2px 2px 4px rgba(0, 0, 0, 0.5);
+                box-shadow: -2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+    #plan-premium {
+        border: 3px solid #2f3640;
+    }
+    #plan-premium:hover,
+    #plan-premium:active {
+        border: 3px solid #ff5252;
+        border-left: none;
+    }
+}
+
+@-webkit-keyframes move-up {
+    from {
+        -webkit-transform: translateY(0px);
+                transform: translateY(0px);
+    }
+    to {
+        -webkit-transform: translateY(-10px);
+                transform: translateY(-10px);
+    }
+}
+
+@keyframes move-up {
+    from {
+        -webkit-transform: translateY(0px);
+                transform: translateY(0px);
+    }
+    to {
+        -webkit-transform: translateY(-10px);
+                transform: translateY(-10px);
+    }
+}
