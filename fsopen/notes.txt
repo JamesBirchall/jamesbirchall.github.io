@@ -1,0 +1,3 @@
+The code inside this is related to the course Full Stack Open:
+
+https://fullstackopen.com/en/about/
