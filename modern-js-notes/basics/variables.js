@@ -1,4 +1,4 @@
-// Rule 1 - Can't define a varibale more than once (let)
+// Rule 1 - Can't define a variable more than once (let)
 
 let petName = 'Hammy'
 petName = 'Tommy'
