@@ -3,7 +3,7 @@
 
 let age = 31
 let dogYears = (age + 1) / 7
-console.log('You are ' + dogYears + ' in dog years.')
+console.log('You are ' + dogYears.toFixed(2) + ' in dog years.')
 
 // Challenge
 let studentScore = 18
