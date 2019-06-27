@@ -33,7 +33,9 @@ if (result2) {
 
 // Default arguments when values may be undefined
 let getScoreText = function(name = 'Unknown Player', score = '0') {
-    return 'Name: ' + name + ', Score: ' + score
+    // return 'Name: ' + name + ', Score: ' + score
+    // template string version, requires using backticks to differentiate and ${} with variable inside auto converted to string
+    return `Name: ${name}, Score: ${score}`
 }
 
 // can add undefined for values before a known one passed into function
@@ -55,5 +57,5 @@ let getTip = function(total, tipPercentage = 20) {
 let totalBill = getTip(100)
 // let totalBill = getTip(undefined, 50)
 if (totalBill) {
-    console.log('For a £100 you tip included comes to: £' + totalBill)
+    console.log(`For a £100 you tip included comes to: £${totalBill}`)
 }
