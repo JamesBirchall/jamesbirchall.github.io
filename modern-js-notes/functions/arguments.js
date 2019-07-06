@@ -57,3 +57,5 @@ let totalBill = getTip(100)
 if (totalBill) {
     console.log('For a £100 you tip included comes to: £' + totalBill)
 }
+
+console.log(`Jim`)
