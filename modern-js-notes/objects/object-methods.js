@@ -19,6 +19,14 @@ let restaurant = {
             console.log(`Sorry we are too full, we have ${this.guestCapacity - this.guestCount} spaces left for guests.`)
             return false
         }
+    },
+    removeBooking: function(partySize) {
+        if(partySize <= this.guestCount) {
+            this.guestCount -= partySize
+            return true
+        } else {
+            return false
+        }
     }
 }
 
@@ -30,3 +38,10 @@ console.log(statusOfBooking)
 
 let statusOfBooking2 = restaurant.makeBooking(70)
 console.log(statusOfBooking2)
+
+let statusOfBooking3 = restaurant.makeBooking(11)
+console.log(statusOfBooking3)
+
+let stausOfRemoveParty = restaurant.removeBooking(45)
+console.log(stausOfRemoveParty)
+console.log(`There is now ${restaurant.guestCapacity - restaurant.guestCount} spaces for guests left.`)
