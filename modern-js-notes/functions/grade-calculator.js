@@ -5,7 +5,7 @@
 // print a message about the grade as a letter - case statement
 // 90-100 A, 80-89, B, 70-79 C, 60-69 D, 0-59 F
 
-let calculateGrade = function(percentageScore){
+const calculateGrade = function(percentageScore) {
     let grade = 'F'
 
     if (percentageScore > 89) {
@@ -21,14 +21,20 @@ let calculateGrade = function(percentageScore){
     return grade
 }
 
-let calculateScore = function(score, total){
+const calculateScore = function(score, total) {
     return (100 / total) * score
 }
 
-let grades = [13,12,5,15,19,20,16]
-let totalScore = 20
+const grades = [13, 12, 5, 15, 19, 20, 16]
+const totalScore = 20
 
-for(let i = 0; i < grades.length; i++) {
-    let percentageScore = calculateScore(grades[i], totalScore)
-    console.log(`Student ${i+1} got ${grades[i]} which is ${percentageScore}% and grade: ${calculateGrade(percentageScore)}`)
+for (let i = 0; i < grades.length; i++) {
+    const percentageScore = calculateScore(grades[i], totalScore)
+    console.log(
+        `Student ${i + 1} got ${
+            grades[i]
+        } which is ${percentageScore}% and grade: ${calculateGrade(
+            percentageScore
+        )}`
+    )
 }
