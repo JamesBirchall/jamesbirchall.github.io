@@ -38,3 +38,39 @@ for(let i = 0; i < notes.length; i++) {
     console.log(`Item ${i+1}: ${notes[i]}`)
 }
 console.log('')
+
+// indexOf = -1 when item not found, string match is case sensitive
+console.log(`Position of "Note 2" in array: ${notes.indexOf('Note 2')}`)    // uses === to do match, two objects equal have to be same object in memory
+
+const newNotes = [{},
+    {
+        title: 'Note 1',
+        body: 'Some body text for this note 1'
+    },
+    {
+        title: 'Note 2',
+        body: 'Some body text for this note 2'
+    },
+    {
+        title: 'Note 3',
+        body: 'Some body text for this note 3'
+    }
+]
+
+console.log(newNotes.findIndex(
+    function (item, index) {
+        if(item.title === 'Note 2') {
+            return true
+        } else {
+            return false
+        }
+    }
+))
+//console.log(index)
+
+// same array methods but now can . notation into the object properties
+newNotes.forEach(function(item, index) {
+    // called for each item in arra
+    console.log(`Item ${index+1}: ${item.title}, ${item.body}`)
+})
+console.log('')

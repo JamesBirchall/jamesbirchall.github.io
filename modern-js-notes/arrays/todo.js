@@ -19,3 +19,10 @@ console.log(`deleted item: ${deletedItem}`)
 todoList.forEach(function(item, index) {
     console.log(`${index+1}. ${item}`)
 })
+console.log('.')
+
+//challenge 4
+for(let i = 0; i < todoList.length; i++) {
+    console.log(`${i+1}. ${todoList[i]}`)
+}
+console.log('.')
