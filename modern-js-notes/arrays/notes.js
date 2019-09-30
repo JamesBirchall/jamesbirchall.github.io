@@ -57,20 +57,51 @@ const newNotes = [{},
     }
 ]
 
-console.log(newNotes.findIndex(
+// instead of triple equality we define the search crieteria for objects properties matching
+
+console.log('Index of \"Note 2\":'+newNotes.findIndex(
     function (item, index) {
-        if(item.title === 'Note 2') {
-            return true
-        } else {
-            return false
-        }
+        // if(item.title === 'Note 2') {
+        //     return true
+        // } else {
+        //     return false
+        // }
+
+        return item.title === 'Note 2'  // more concise approach to returning boolean
     }
-))
-//console.log(index)
+));
 
 // same array methods but now can . notation into the object properties
 newNotes.forEach(function(item, index) {
     // called for each item in arra
     console.log(`Item ${index+1}: ${item.title}, ${item.body}`)
-})
+});
 console.log('')
+
+// Find Note Function
+
+const findNote = function(notes, noteTitle) {
+    // return the note object rather than index or anything
+    const index = notes.findIndex(function(item, index){
+        // return item.title === noteTitle
+        // case insensative - node was not processing if didn't explicitly make it a string type!!
+        let title = String(item.title).toLowerCase()
+
+        return title === noteTitle.toLowerCase()
+    })
+
+    return notes[index]
+}
+
+const findNote2 = function(notes, noteTitle) {
+    return notes.find(function(item, index) {
+        let title = String(item.title).toLowerCase()
+        return title === noteTitle.toLowerCase()
+    })
+}
+
+const note = findNote(newNotes, 'Note 3')
+console.log(note)
+const note2 = findNote2(newNotes, 'note 3')
+console.log(note2)
+

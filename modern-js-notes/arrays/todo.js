@@ -26,3 +26,38 @@ for(let i = 0; i < todoList.length; i++) {
     console.log(`${i+1}. ${todoList[i]}`)
 }
 console.log('.')
+
+// Challange
+
+//1. Make array of objects, completed or not status
+//2. create function to remove a todo by text Value of item
+
+let todoObjectlist = [
+    {
+        item: 'Walk the dog',
+        completed: false
+    },
+    {
+        item: 'Buy Food',
+        completed: false
+    },
+    {
+        item: 'Take out rubbish',
+        completed: true
+    }
+]
+
+let deleteTodo = function(item) {
+    // search through todoObjectList and find the item string, if exists remove item
+    const index = todoObjectlist.findIndex(function(todo){
+        let title = String(item.item)
+        let secondTitle = String(todo.item)
+        return title === secondTitle
+    })
+
+    todoObjectlist.splice(index-1, 1)
+}
+console.log(todoObjectlist)
+console.log('--------------')
+deleteTodo('Buy food')
+console.log(todoObjectlist)
