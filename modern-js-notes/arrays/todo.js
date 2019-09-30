@@ -57,7 +57,7 @@ let deleteTodo = function(item) {
     if(index > -1) {
         todoObjectlist.splice(index, 1)
     } else {
-        console.log('Could not find title of todo with case insensative search')
+        console.log('Could not find title of todo with case insensitive search')
     }
 }
 console.log(todoObjectlist)
