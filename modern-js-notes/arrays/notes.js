@@ -49,11 +49,15 @@ const newNotes = [{},
     },
     {
         title: 'Note 2',
-        body: 'Some body text for this note 2'
+        body: 'This Person is going to be good'
     },
     {
-        title: 'Note 3',
+        title: 'Note 3 for a Person',
         body: 'Some body text for this note 3'
+    },
+    {
+        title: 'Note 4',
+        body: 'Have found a person in here'
     }
 ]
 
@@ -105,3 +109,17 @@ console.log(note)
 const note2 = findNote2(newNotes, 'note 3')
 console.log(note2)
 
+// filter a list of notes for any string match in title or body
+const findNoteFilter = function(filter) {
+    let filterText = filter.toLowerCase()
+    return newNotes.filter(function(note, index) {
+        let titleText = String(note.title).toLowerCase()
+        let bodyText = String(note.body).toLowerCase()
+        return bodyText.includes(filterText) || titleText.includes(filterText)
+    })
+}
+
+// change filter for different matches
+findNoteFilter('Person').forEach(function(item) {
+    console.log(`Title: ${item.title} | Body: ${item.body}`)
+})

@@ -60,8 +60,20 @@ let deleteTodo = function(item) {
         console.log('Could not find title of todo with case insensitive search')
     }
 }
+// console.log(todoObjectlist)
+// console.log('--------------')
+// deleteTodo('Buy food')
+// console.log(todoObjectlist)
+// deleteTodo('Buy food')
+
+// challenge - only show not completed todos
+
+function getThingsToDo(list) {
+    return list.filter(function(item, index) {
+        return !item.completed  // take those that are false by default to return
+    })
+}
+console.log('Not Filtered Items: ')
 console.log(todoObjectlist)
-console.log('--------------')
-deleteTodo('Buy food')
-console.log(todoObjectlist)
-deleteTodo('Buy food')
+console.log('Filtered List on Not Completed Items: ')
+console.log(getThingsToDo(todoObjectlist))
