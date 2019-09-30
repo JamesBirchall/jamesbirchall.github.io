@@ -50,13 +50,12 @@ let todoObjectlist = [
 let deleteTodo = function(item) {
     // search through todoObjectList and find the item string, if exists remove item
     const index = todoObjectlist.findIndex(function(todo){
-        let title = String(item.item)
         let secondTitle = String(todo.item)
-        return title === secondTitle
+        return item.toLowerCase() === secondTitle.toLowerCase()
     })
 
     if(index > -1) {
-        todoObjectlist.splice(index-1, 1)
+        todoObjectlist.splice(index, 1)
     } else {
         console.log('Could not find title of todo with case insensative search')
     }
