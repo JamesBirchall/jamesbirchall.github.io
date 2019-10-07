@@ -38,11 +38,19 @@ let todoObjectlist = [
         completed: false
     },
     {
+        item: 'Find Herbert',
+        completed: true
+    },
+    {
         item: 'Buy Food',
         completed: false
     },
     {
         item: 'Take out rubbish',
+        completed: true
+    },
+    {
+        item: 'Get a goldfish',
         completed: true
     }
 ]
@@ -79,4 +87,28 @@ console.log('Filtered List on Not Completed Items: ')
 console.log(getThingsToDo(todoObjectlist))
 
 // sorting a list - using array sorting function
+// ignore text sort by completed property  uncompleted go to top, then completed at bottom of list
 
+function sortUnfinished(list) {
+    list.sort(function(a, b) {
+        // if uncompleted put first, otherwise 2nd
+        if(a.completed) {
+            return 1
+        } else if(b.completed) {
+            return -1
+        }
+        return 0
+    })
+}
+
+function printList(list) {
+    list.forEach(function(item) {
+    console.log(`Item: ${item.item}, Status: ${item.completed}`)
+})
+}
+
+console.log(`Unsorted:`)
+printList(todoObjectlist)
+sortUnfinished(todoObjectlist)
+console.log(`Sorted:`)
+printList(todoObjectlist)

@@ -48,7 +48,7 @@ const newNotes = [{},
         body: 'Some body text for this 4th note'
     },
     {
-        title: 'Note 2',
+        title: 'note 2',
         body: 'This Person is going to be good 2nd'
     },
     {
@@ -124,20 +124,23 @@ findNoteFilter('Person').forEach(function(item) {
     console.log(`Title: ${item.title} | Body: ${item.body}`)
 })
 
-// sorting an array, with objects will need to provide a function to sort on
+// sorting an array, with objects will need to provide a function to sort on - works on transforming passed in object array
 function sortNotes(notes) {
-    return notes.sort(function(a, b) {
-        if( a.title < b.title) {
+    notes.sort(function(a, b) {
+        if( String(a.title).toLowerCase() < String(b.title).toLowerCase()) {
             return -1
-        } else if (a.title > b.title) {
+        } else if (String(a.title).toLowerCase() > String(b.title).toLowerCase()) {
             return 1
         }
 
         return 0
     })
 }
-
-console.log(`Notes sorted...`)
-sortNotes(newNotes).forEach(function(item, index) {
-    console.log(`Note ${index}: ${item.title}\tBody: ${item.body}`)
-})
+console.log(`Notes unsorted...`)
+console.log(newNotes)
+console.log(`Notes sorted by title alphabetical...`)
+sortNotes(newNotes)
+console.log(newNotes)
+// newNotes.forEach(function(item, index) {
+//     console.log(`Note ${index}: ${item.title}\tBody: ${item.body}`)
+// })
