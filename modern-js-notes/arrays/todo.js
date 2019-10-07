@@ -27,7 +27,7 @@ for(let i = 0; i < todoList.length; i++) {
 }
 console.log('.')
 
-// Challange
+// Challange 5
 
 //1. Make array of objects, completed or not status
 //2. create function to remove a todo by text Value of item
@@ -77,3 +77,6 @@ console.log('Not Filtered Items: ')
 console.log(todoObjectlist)
 console.log('Filtered List on Not Completed Items: ')
 console.log(getThingsToDo(todoObjectlist))
+
+// sorting a list - using array sorting function
+

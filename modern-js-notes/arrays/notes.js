@@ -44,20 +44,20 @@ console.log(`Position of "Note 2" in array: ${notes.indexOf('Note 2')}`)    // u
 
 const newNotes = [{},
     {
-        title: 'Note 1',
-        body: 'Some body text for this note 1'
+        title: 'Note 4',
+        body: 'Some body text for this 4th note'
     },
     {
         title: 'Note 2',
-        body: 'This Person is going to be good'
+        body: 'This Person is going to be good 2nd'
     },
     {
         title: 'Note 3 for a Person',
         body: 'Some body text for this note 3'
     },
     {
-        title: 'Note 4',
-        body: 'Have found a person in here'
+        title: 'Note 1',
+        body: 'Have found a person in here 1st'
     }
 ]
 
@@ -122,4 +122,22 @@ const findNoteFilter = function(filter) {
 // change filter for different matches
 findNoteFilter('Person').forEach(function(item) {
     console.log(`Title: ${item.title} | Body: ${item.body}`)
+})
+
+// sorting an array, with objects will need to provide a function to sort on
+function sortNotes(notes) {
+    return notes.sort(function(a, b) {
+        if( a.title < b.title) {
+            return -1
+        } else if (a.title > b.title) {
+            return 1
+        }
+
+        return 0
+    })
+}
+
+console.log(`Notes sorted...`)
+sortNotes(newNotes).forEach(function(item, index) {
+    console.log(`Note ${index}: ${item.title}\tBody: ${item.body}`)
 })
