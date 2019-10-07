@@ -92,9 +92,9 @@ console.log(getThingsToDo(todoObjectlist))
 function sortUnfinished(list) {
     list.sort(function(a, b) {
         // if uncompleted put first, otherwise 2nd
-        if(a.completed) {
+        if(a.completed && !b.completed) {
             return 1
-        } else if(b.completed) {
+        } else if(!a.completed && b.completed) {
             return -1
         }
         return 0
