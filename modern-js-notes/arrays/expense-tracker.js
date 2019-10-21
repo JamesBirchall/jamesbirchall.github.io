@@ -3,10 +3,11 @@ const account = {
     expenses: [],    // array of all expenses
     addExpense: function(description, amount) {
         if(isNaN(amount)) {
-            console.log('Amount is not a number, expenses not added')
+            console.log('Amount is not a number, expense not added')
             return
         }
 
+        console.log(`Expense: ${description}, ${amount} being added`)
         this.expenses.push({description, amount})
     },
     getAccountSummary: function() {
