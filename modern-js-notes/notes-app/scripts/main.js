@@ -6,4 +6,4 @@ header1.innerText = 'Something else'
 // delete an element <p> tag
 const paragraph = document.querySelector('p')
 console.log(paragraph)
-document.removeChild(paragraph)
+paragraph.remove()
