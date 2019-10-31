@@ -2,9 +2,9 @@
 // Birchall 2019
 
 // example of finding content and removing based on includes
-const paragrphs = document.querySelectorAll('p')
-paragrphs.forEach(function(item){
-    if(item.innertext.includes('gym')){
+const paragraphs = document.querySelectorAll('p')
+paragraphs.forEach(function(item){
+    if(item.innerText.includes('gym')){
         item.remove()
     }
 })
