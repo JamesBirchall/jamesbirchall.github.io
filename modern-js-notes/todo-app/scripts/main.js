@@ -4,7 +4,7 @@
 // example of finding content and removing based on includes
 const paragrphs = document.querySelectorAll('p')
 paragrphs.forEach(function(item){
-    if(item.inndertext.includes('gym')){
+    if(item.innertext.includes('gym')){
         item.remove()
     }
 })
