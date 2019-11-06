@@ -45,5 +45,5 @@ const notes = [{},
 notes.forEach(function(note, index){
     const newElement = document.createElement('p')
     newElement.textContent = note.body
-    document.querySelector('h1').insertAdjacentElement('afterend',newElement)
+    document.querySelector('body').appendChild(newElement)
 })
