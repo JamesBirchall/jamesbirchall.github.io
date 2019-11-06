@@ -17,6 +17,32 @@ paragraphs.forEach(function(item) {
 
 // adding elements to DOM in 3 steps (create element, update contents, put it somewhere)
 
-const newElement = document.createElement('p') // not visible or containing contents but is representative of DOM object returned
-newElement.textContent = 'An added new element from JS'
-document.querySelector('body').appendChild(newElement)
+// const newElement = document.createElement('p') // not visible or containing contents but is representative of DOM object returned
+// newElement.textContent = 'An added new element from JS'
+// document.querySelector('body').appendChild(newElement)
+
+const notes = [{},
+    {
+        title: 'Note 4',
+        body: 'Some body text for this 4th note'
+    },
+    {
+        title: 'note 2',
+        body: 'This Person is going to be good 2nd'
+    },
+    {
+        title: 'Note 3 for a Person',
+        body: 'Some body text for this note 3'
+    },
+    {
+        title: 'Note 1',
+        body: 'Have found a person in here 1st'
+    }
+]
+
+const newElement = document.createElement('p')
+
+notes.forEach(function(note){
+    newElement.textContent = note.body
+    document.querySelector('body').appendChild(newElement)
+})
