@@ -18,5 +18,5 @@ paragraphs.forEach(function(item) {
 // adding elements to DOM in 3 steps (create element, update contents, put it somewhere)
 
 const newElement = document.createElement('p') // not visible or containing contents but is representative of DOM object returned
-newElement.textContent('An added new element from JS')
+newElement.textContent = 'An added new element from JS'
 document.querySelector('body').appendChild(newElement)
