@@ -40,9 +40,10 @@ const notes = [{},
     }
 ]
 
-const newElement = document.createElement('p')
 
-notes.forEach(function(note){
+
+notes.forEach(function(note, index){
+    const newElement = document.createElement('p')
     newElement.textContent = note.body
     document.querySelector('h1').insertAdjacentElement('afterend',newElement)
 })
