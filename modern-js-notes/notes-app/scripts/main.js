@@ -51,8 +51,8 @@ notes.forEach(function(note, index){
 // event listener for the button to add items
 document.querySelector('button').addEventListener('click', function(){
     let input = document.querySelector('input1')
-    let text = input.innerText
-    input.innerText = ''
+    let text = input.value
+    input.value = ''
 
 
     console.log(text)
