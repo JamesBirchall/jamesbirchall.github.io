@@ -64,11 +64,17 @@ function addNote() {
     let input = document.getElementById('input0')
     let text = input.value
     if(text == '') {
-        console.log('You need to enter at least something')
-        const newElement = document.createElement('p')
-        newElement.textContent = 'You need to enter at least something.'
-        newElement.setAttribute('id', 'error0')
-        document.querySelector('h1').insertAdjacentElement("afterend", newElement)
+        const errorMessage = document.getElementById('error0')
+        if(errorMessage) {
+            return
+        } else {
+            console.log('You need to enter at least something')
+            const newElement = document.createElement('p')
+            newElement.textContent = 'You need to enter at least something.'
+            newElement.setAttribute('id', 'error0')
+            document.querySelector('h1').insertAdjacentElement("afterend", newElement)
+        }
+
     } else {
         const errorMessage = document.getElementById('error0')
         if(errorMessage) {
