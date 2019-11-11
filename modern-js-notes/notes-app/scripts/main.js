@@ -65,7 +65,13 @@ function addNote() {
     let text = input.value
     if(input.value == '') {
         console.log('You need to enter at least something')
+        const newElement = document.createElement('p')
+        newElement.textContent = 'You need to enter at least something.'
+        newElement.setAttribute('id', 'error0')
+        document.querySelector('h1').append(newElement)
     } else {
+        document.getElementById('error0').remove()
+
         input.value = ''
 
         let newValue = {title:'title', body:text}
