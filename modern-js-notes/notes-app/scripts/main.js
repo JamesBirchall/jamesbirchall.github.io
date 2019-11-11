@@ -55,7 +55,7 @@ document.querySelector('button').addEventListener('click', function(){
     input.value = ''
 
     let newValue = {title:'title', body:text}
-    notes.append(newValue)
+    notes.push(newValue)
     const newElement = document.createElement('p')
     newElement.textContent = newValue.body
     document.querySelector('body').appendChild(newElement)
