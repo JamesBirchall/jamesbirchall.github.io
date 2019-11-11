@@ -49,6 +49,6 @@ notes.forEach(function(note, index){
 })
 
 // event listener for the add button
-querySelector('button').addEventListener('click', function(){
+document.querySelector('button').addEventListener('click', function(){
     console.log('Clicked Button')
 })
