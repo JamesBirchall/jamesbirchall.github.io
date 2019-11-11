@@ -80,6 +80,7 @@ function addNote() {
         const errorMessage = document.getElementById('error0')
         if(errorMessage) {
             errorMessage.remove
+            console.log('I should have removed the error message')
         } else {
             console.log('no error message present')
         }
