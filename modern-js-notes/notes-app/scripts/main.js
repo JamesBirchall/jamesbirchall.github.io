@@ -63,7 +63,7 @@ document.querySelector('input').addEventListener('keypress', function(key){
 function addNote() {
     let input = document.getElementById('input0')
     let text = input.value
-    if(input.value == '') {
+    if(text == '') {
         console.log('You need to enter at least something')
         const newElement = document.createElement('p')
         newElement.textContent = 'You need to enter at least something.'
@@ -73,6 +73,8 @@ function addNote() {
         const errorMessage = document.getElementById('error0')
         if(errorMessage) {
             errorMessage.remove
+        } else {
+            console.log('no error message present')
         }
 
         input.value = ''
