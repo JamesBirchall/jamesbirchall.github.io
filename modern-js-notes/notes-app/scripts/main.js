@@ -68,9 +68,12 @@ function addNote() {
         const newElement = document.createElement('p')
         newElement.textContent = 'You need to enter at least something.'
         newElement.setAttribute('id', 'error0')
-        document.querySelector('h1').append(newElement)
+        document.querySelector('h1').insertAdjacentElement("afterend", newElement)
     } else {
-        document.getElementById('error0').remove()
+        const errorMessage = document.getElementById('error0')
+        if(errorMessage) {
+            errorMessage.remove
+        }
 
         input.value = ''
 
