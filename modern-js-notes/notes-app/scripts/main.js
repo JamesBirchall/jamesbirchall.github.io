@@ -42,11 +42,11 @@ const notes = [{},
 
 
 
-notes.forEach(function(note, index){
-    const newElement = document.createElement('p')
-    newElement.textContent = note.body
-    document.querySelector('body').appendChild(newElement)
-})
+// notes.forEach(function(note, index){
+//     const newElement = document.createElement('p')
+//     newElement.textContent = note.body
+//     document.querySelector('body').appendChild(newElement)
+// })
 
 // event listener for the button to add items
 document.querySelector('button').addEventListener('click', function(){
