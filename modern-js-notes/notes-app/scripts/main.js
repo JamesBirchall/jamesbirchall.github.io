@@ -47,3 +47,8 @@ notes.forEach(function(note, index){
     newElement.textContent = note.body
     document.querySelector('body').appendChild(newElement)
 })
+
+// event listener for the add button
+querySelector('button').addEventListener('click', function(){
+    console.log('Clicked Button')
+})
