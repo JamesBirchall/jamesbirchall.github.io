@@ -66,6 +66,7 @@ function addNote() {
     if(text == '') {
         const errorMessage = document.getElementById('error0')
         if(errorMessage) {
+            console.log('Message already present')
             return
         } else {
             console.log('You need to enter at least something')
