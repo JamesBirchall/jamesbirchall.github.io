@@ -50,7 +50,7 @@ notes.forEach(function(note, index){
 
 // event listener for the button to add items
 document.querySelector('button').addEventListener('click', function(){
-    let input = document.getElementById('input1')
+    let input = document.getElementById('input0')
     let text = input.value
     input.value = ''
 
