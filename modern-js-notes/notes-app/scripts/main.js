@@ -48,15 +48,30 @@ const notes = [{},
 //     document.querySelector('body').appendChild(newElement)
 // })
 
-// event listener for the button to add items
+// event listener for the button
 document.querySelector('button').addEventListener('click', function(){
+    addNote()
+})
+
+//event listener for input field
+document.querySelector('input').addEventListener('keypress', function(key){
+    if(key.key == 'Enter') {
+        addNote()
+    }
+})
+
+function addNote() {
     let input = document.getElementById('input0')
     let text = input.value
-    input.value = ''
+    if(input.value == '') {
+        console.log('You need to enter at least something')
+    } else {
+        input.value = ''
 
-    let newValue = {title:'title', body:text}
-    notes.push(newValue)
-    const newElement = document.createElement('p')
-    newElement.textContent = newValue.body
-    document.querySelector('body').appendChild(newElement)
-})
+        let newValue = {title:'title', body:text}
+        notes.push(newValue)
+        const newElement = document.createElement('p')
+        newElement.textContent = newValue.body
+        document.querySelector('body').appendChild(newElement)
+    }
+}
