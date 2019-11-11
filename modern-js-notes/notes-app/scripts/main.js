@@ -48,7 +48,12 @@ notes.forEach(function(note, index){
     document.querySelector('body').appendChild(newElement)
 })
 
-// event listener for the add button
+// event listener for the button to add items
 document.querySelector('button').addEventListener('click', function(){
-    console.log('Clicked Button')
+    let input = document.querySelector('input')
+    let text = input.innerText
+    input.innerText = ''
+
+
+    console.log(text)
 })
