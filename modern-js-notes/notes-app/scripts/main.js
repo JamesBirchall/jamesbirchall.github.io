@@ -69,7 +69,7 @@ document.querySelectorAll('button')[1].addEventListener('click', function(){
     let allNotes = document.querySelectorAll('p')
     if(allNotes) {
         allNotes.forEach(function(note){
-            if(note.innerText.includes('note')){
+            if(note.getAttribute('id').includes('note')){
                 note.remove
             }
         })
