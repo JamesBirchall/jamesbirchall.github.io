@@ -21,7 +21,7 @@ paragraphs.forEach(function(item) {
 // newElement.textContent = 'An added new element from JS'
 // document.querySelector('body').appendChild(newElement)
 
-const notes = [
+let notes = [
     // {},
     // {
     //     title: 'Note 4',
