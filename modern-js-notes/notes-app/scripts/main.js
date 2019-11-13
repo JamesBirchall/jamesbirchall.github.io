@@ -89,7 +89,7 @@ function addNote() {
         notes.push(newValue)
         const newElement = document.createElement('p')
         newElement.textContent = newValue.body
-        const identifier = `note${notes.count}`
+        const identifier = `note${notes.length}`
         newElement.setAttribute('id', identifier)
         document.querySelector('body').appendChild(newElement)
     }
