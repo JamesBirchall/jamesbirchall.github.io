@@ -21,23 +21,24 @@ paragraphs.forEach(function(item) {
 // newElement.textContent = 'An added new element from JS'
 // document.querySelector('body').appendChild(newElement)
 
-const notes = [{},
-    {
-        title: 'Note 4',
-        body: 'Some body text for this 4th note'
-    },
-    {
-        title: 'note 2',
-        body: 'This Person is going to be good 2nd'
-    },
-    {
-        title: 'Note 3 for a Person',
-        body: 'Some body text for this note 3'
-    },
-    {
-        title: 'Note 1',
-        body: 'Have found a person in here 1st'
-    }
+const notes = [
+    // {},
+    // {
+    //     title: 'Note 4',
+    //     body: 'Some body text for this 4th note'
+    // },
+    // {
+    //     title: 'note 2',
+    //     body: 'This Person is going to be good 2nd'
+    // },
+    // {
+    //     title: 'Note 3 for a Person',
+    //     body: 'Some body text for this note 3'
+    // },
+    // {
+    //     title: 'Note 1',
+    //     body: 'Have found a person in here 1st'
+    // }
 ]
 
 
@@ -57,6 +58,21 @@ document.querySelector('button').addEventListener('click', function(){
 document.querySelector('input').addEventListener('keypress', function(key){
     if(key.key == 'Enter') {
         addNote()
+    }
+})
+
+// get 2nd button - reset
+document.querySelectorAll('button')[1].addEventListener('click', function(){
+    notes = []  // reset notes array and future note count
+
+    // go through all p elements with id starting note and remove
+    let allNotes = document.querySelectorAll('p')
+    if(allNotes) {
+        allNotes.forEach(function(note){
+            if(note.innerText.includes('note')){
+                note.remove
+            }
+        })
     }
 })
 
