@@ -114,5 +114,5 @@ function addNote() {
 //event listener for input field for filtering notes field
 document.getElementById('input1').addEventListener('keypress', function(key){
     // for any keypress
-    console.log(key.key)
+    console.log(this.value)
 })
