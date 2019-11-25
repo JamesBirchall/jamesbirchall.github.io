@@ -54,8 +54,8 @@ document.querySelector('button').addEventListener('click', function(){
     addNote()
 })
 
-//event listener for input field
-document.querySelector('input').addEventListener('keypress', function(key){
+//event listener for input field for adding note text
+document.getElementById('input0').addEventListener('keypress', function(key){
     if(key.key == 'Enter') {
         addNote()
     }
@@ -110,3 +110,9 @@ function addNote() {
         document.querySelector('body').appendChild(newElement)
     }
 }
+
+//event listener for input field for filtering notes field
+document.getElementById('input0').addEventListener('keypress', function(key){
+    // for any keypress
+    console.log(key.key)
+})
