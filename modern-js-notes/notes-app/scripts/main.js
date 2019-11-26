@@ -121,6 +121,9 @@ document.getElementById('input1').addEventListener('keypress', function(key){
     // have second array which holds filtered list from original
     let filter = `${this.value}${key.key}`
     notes.forEach(function(note) {
+        console.log(filter)
+        console.log('-')
+        console.log(note.title)
         if(note.title.includes(filter)){
             filteredNotes.push(note)
             console.log(note.title)
