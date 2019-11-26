@@ -41,6 +41,8 @@ let notes = [
     // }
 ]
 
+let filteredNotes = []
+
 
 
 // notes.forEach(function(note, index){
@@ -114,5 +116,22 @@ function addNote() {
 //event listener for input field for filtering notes field
 document.getElementById('input1').addEventListener('keypress', function(key){
     // for any keypress
-    console.log(`${this.value}${key.key}`)  // get value before event and the keypressed for whole word in input field (could select outside this field though)
+    // console.log(`${this.value}${key.key}`)  // get value before event and the keypressed for whole word in input field (could select outside this field though)
+
+    // have second array which holds filtered list from original
+    let filter = `${this.value}${key.key}`
+    notes.forEach(function(note) {
+        if(note.title.includes(filter)){
+            filteredNotes.push(note)
+            console.log(note.title)
+        }
+    })
+    
+
+    // so now have filtered notes list I need to remove everything in Notes and <p> and re-add
+    
 })
+
+// considerations:
+// where use the original list I should really purely be relying on the filtered list, retainin the original unless Clear Button is used.
+// every filter requires a complete redraw of the filtered list, removal of the <p> tags and re-adding from filtered list
