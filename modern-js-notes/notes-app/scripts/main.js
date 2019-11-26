@@ -1,5 +1,5 @@
 let header1 = document.getElementById('header1')
-header1.innerText = 'Something else'
+header1.innerText = 'Notes App Basics'
 
 // DOM - Document Object Model manipulation
 
