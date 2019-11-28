@@ -119,7 +119,7 @@ document.getElementById('input1').addEventListener('keypress', function(key){
     // console.log(`${this.value}${key.key}`)  // get value before event and the keypressed for whole word in input field (could select outside this field though)
 
     // have second array which holds filtered list from original
-    let filter = `${this.value}${key.key}`
+    let filter = `${this.target.value}`
     notes.forEach(function(note) {
         if(note.body.includes(filter)){
             filteredNotes.push(note)
@@ -131,22 +131,6 @@ document.getElementById('input1').addEventListener('keypress', function(key){
     // so now have filtered notes list I need to remove everything in Notes and <p> and re-add
     // function
     
-})
-
-// same listener for keydown of backspace
-document.getElementById('input1').addEventListener('keydown', function(key){
-
-    if(key.key == 'BackSpace') {
-        let filter = `${this.value}`
-        notes.forEach(function(note) {
-            if(note.body.includes(filter)){
-                filteredNotes.push(note)
-                console.log(note.body)
-            }
-        })
-    }
-    
-    // function
 })
 
 // considerations:
