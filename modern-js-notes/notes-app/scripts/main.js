@@ -76,6 +76,8 @@ document.querySelectorAll('button')[1].addEventListener('click', function(){
             }
         })
     }
+
+    document.getElementById('input1').value = ''
 })
 
 function addNote() {
