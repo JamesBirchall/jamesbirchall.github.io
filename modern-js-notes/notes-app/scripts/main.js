@@ -158,7 +158,7 @@ const createNotes = function(notes) {
         checkboxElement.type = 'checkbox'
         checkboxElement.name = 'done'
         checkboxElement.value = true
-        newElement.append(checkboxElement)
+        newElement.appendChild(checkboxElement)
 
         newElement.textContent = note.body
         const identifier = `note${index}`
