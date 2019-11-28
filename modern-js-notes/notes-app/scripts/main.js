@@ -139,7 +139,7 @@ const reDisplayNotes = function(filteredNotes){
     createNotes(filteredNotes)
 }
 
-const clearNotesFromDisplay(){
+const clearNotesFromDisplay = function(){
     let allNotes = document.querySelectorAll('li')
     
     if(allNotes) {
