@@ -152,13 +152,6 @@ const reDisplayNotes = function(filteredNotes){
         newElement.textContent = note.body
         const identifier = `note${index}`
         newElement.setAttribute('id', identifier)
-
-        const checkbox = document.createElement('input')
-        checkbox.type = "checkbox"
-        checkbox.name = "done"
-        checkbox.value = false
-
         document.querySelector('ul').appendChild(newElement)
-        document.getElementById('note${index}').prepend(checkbox)
     })
 }
