@@ -116,19 +116,38 @@ const filters= {
 }
 
 const renderNotes = function(notes, filters){
-    const filterNotes = notes.filter(function(note){
+    const filteredNotes = notes.filter(function(note){
         let noteBodyLowerCase = note.body.toLowerCase()
         let filterLowerCase = filters.searchText.toLowerCase()
 
         return noteBodyLowerCase.includes(filterLowerCase)
     })
-    console.log(filterNotes)
+    
+    reDisplayNotes(filteredNotes)
 }
 
-renderNotes(notes, filters)
-
-//event listener for input field for filtering notes field - best to use input for monitoring all changes
+//event listener for input field for filtering notes field - best to use input for monitoring all changes, also detects backspaces etc
 document.getElementById('input1').addEventListener('input', function(element){
     filters.searchText = element.target.value
     renderNotes(notes, filters)
 })
+
+const reDisplayNotes = function(filteredNotes){
+    let allNotes = document.querySelectorAll('p')
+    
+    if(allNotes) {
+        allNotes.forEach(function(note){
+            if(note.getAttribute('id').includes('note')){
+                note.remove()
+            }
+        })
+    }
+
+    filteredNotes.forEach(function(note, index){
+        const newElement = document.createElement('p')
+        newElement.textContent = note.body
+        const identifier = `note${index}`
+        newElement.setAttribute('id', identifier)
+        document.querySelector('body').appendChild(newElement)
+    })
+}
