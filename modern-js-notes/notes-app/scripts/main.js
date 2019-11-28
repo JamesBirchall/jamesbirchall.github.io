@@ -114,25 +114,15 @@ function addNote() {
 }
 
 //event listener for input field for filtering notes field - best to use input for monitoring all changes
-document.getElementById('input1').addEventListener('input', function(key){
-    // for any keypress
-    // console.log(`${this.value}${key.key}`)  // get value before event and the keypressed for whole word in input field (could select outside this field though)
+document.getElementById('input1').addEventListener('input', function(element){
 
     // have second array which holds filtered list from original
-    let filter = `${this.target.value}`
+    let filter = `${element.target.value}`
     notes.forEach(function(note) {
         if(note.body.includes(filter)){
             filteredNotes.push(note)
             console.log(note.body)
         }
     })
-    
-
-    // so now have filtered notes list I need to remove everything in Notes and <p> and re-add
-    // function
-    
+        
 })
-
-// considerations:
-// where use the original list I should really purely be relying on the filtered list, retainin the original unless Clear Button is used.
-// every filter requires a complete redraw of the filtered list, removal of the <p> tags and re-adding from filtered list
