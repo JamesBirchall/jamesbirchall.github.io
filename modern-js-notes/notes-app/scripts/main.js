@@ -108,7 +108,6 @@ function addNote() {
         let newValue = {title:'title', body:text}
         notes.push(newValue)
 
-
         createNotes([newValue])
     }
 }
@@ -152,7 +151,7 @@ const clearNotesFromDisplay = function(){
 }
 
 const createNotes = function(notes) {
-    notes.forEach(function(note){
+    notes.forEach(function(note, index){
         const newElement = document.createElement('li')
         newElement.textContent = note.body
         const identifier = `note${index}`
