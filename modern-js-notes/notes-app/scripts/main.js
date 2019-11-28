@@ -156,11 +156,11 @@ const createNotes = function(notes) {
 
         const checkboxElement = document.createElement('input')
         checkboxElement.type = 'checkbox'
-        checkboxElement.name = 'done'
         checkboxElement.value = true
         newElement.appendChild(checkboxElement)
 
-        newElement.textContent = note.body
+        const text = note.body
+        newElement.appendChild(document.createTextNode(text))
         const identifier = `note${index}`
         newElement.setAttribute('id', identifier)
         document.querySelector('ul').appendChild(newElement)
