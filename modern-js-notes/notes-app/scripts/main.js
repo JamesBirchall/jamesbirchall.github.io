@@ -107,11 +107,9 @@ function addNote() {
 
         let newValue = {title:'title', body:text}
         notes.push(newValue)
-        const newElement = document.createElement('li')
-        newElement.textContent = newValue.body
-        const identifier = `note${notes.length}`
-        newElement.setAttribute('id', identifier)
-        document.querySelector('ul').appendChild(newElement)
+
+
+        createNotes([newValue])
     }
 }
 
@@ -137,6 +135,11 @@ document.getElementById('input1').addEventListener('input', function(element){
 })
 
 const reDisplayNotes = function(filteredNotes){
+    clearNotesFromDisplay()
+    createNotes(filteredNotes)
+}
+
+const clearNotesFromDisplay(){
     let allNotes = document.querySelectorAll('li')
     
     if(allNotes) {
@@ -146,8 +149,10 @@ const reDisplayNotes = function(filteredNotes){
             }
         })
     }
+}
 
-    filteredNotes.forEach(function(note, index){
+const createNotes = function(notes) {
+    notes.forEach(function(note){
         const newElement = document.createElement('li')
         newElement.textContent = note.body
         const identifier = `note${index}`
