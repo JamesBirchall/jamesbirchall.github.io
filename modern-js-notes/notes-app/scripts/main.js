@@ -158,7 +158,7 @@ const reDisplayNotes = function(filteredNotes){
         checkbox.name = "done"
         checkbox.value = false
 
-        document.querySelector('ul').appendChild(checkbox)
         document.querySelector('ul').appendChild(newElement)
+        document.getElementById('note${index}').prepend(checkbox)
     })
 }
