@@ -108,7 +108,7 @@ function addNote() {
         let newValue = {title:'title', body:text}
         notes.push(newValue)
 
-        createNotes([newValue], notes.length-1)
+        createNotes([newValue], notes.length)
     }
 }
 
@@ -163,7 +163,7 @@ const createNotes = function(notes, altIndex) {
         newElement.appendChild(document.createTextNode(text))
         let identifier = 0
         if(altIndex){
-            identifier = altIndex
+            identifier = `note${altIndex}`
         } else {
             identifier = `note${index}`
         }
