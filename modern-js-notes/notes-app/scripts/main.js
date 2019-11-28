@@ -41,10 +41,6 @@ let notes = [
     // }
 ]
 
-let filteredNotes = []
-
-
-
 // notes.forEach(function(note, index){
 //     const newElement = document.createElement('p')
 //     newElement.textContent = note.body
@@ -115,14 +111,17 @@ function addNote() {
     }
 }
 
+const filteredNotes = {
+    searchText = ''
+}
+
 //event listener for input field for filtering notes field - best to use input for monitoring all changes
 document.getElementById('input1').addEventListener('input', function(element){
 
     // have second array which holds filtered list from original
-    let filter = `${element.target.value}`
+    filteredNotes.searchText = `${element.target.value}`
     notes.forEach(function(note) {
-        if(note.body.includes(filter)){
-            filteredNotes.push(note)
+        if(note.body.includes(filteredNotes.searchText)){
             console.log(note.body)
         }
     })
