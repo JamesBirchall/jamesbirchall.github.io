@@ -111,19 +111,23 @@ function addNote() {
     }
 }
 
-const filteredNotes = {
-    searchText = ''
+const filters= {
+    searchText : ''
 }
+
+const renderNotes = function(notes, filters){
+    const filterNotes = notes.filter(function(note){
+        let noteBodyLowerCase = note.body.toLowerCase()
+        let filterLowerCase = filters.toLowerCase()
+
+        return noteBodyLowerCase.includes(filterLowerCase)
+    })
+    console.log(filterNotes)
+}
+
+renderNotes(notes, filters)
 
 //event listener for input field for filtering notes field - best to use input for monitoring all changes
 document.getElementById('input1').addEventListener('input', function(element){
-
-    // have second array which holds filtered list from original
-    filteredNotes.searchText = `${element.target.value}`
-    notes.forEach(function(note) {
-        if(note.body.includes(filteredNotes.searchText)){
-            console.log(note.body)
-        }
-    })
-        
+    renderNotes(notes, filters)
 })
