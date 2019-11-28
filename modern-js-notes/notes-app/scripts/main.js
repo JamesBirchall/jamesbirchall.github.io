@@ -11,7 +11,11 @@ header1.innerText = 'Notes App Basics'
 // delete all element <p> tags
 const paragraphs = document.querySelectorAll('p')
 paragraphs.forEach(function(item) {
-    console.log(item)
+    item.remove()
+})
+
+const listItems = document.querySelectorAll('li')
+listItems.forEach(function(item) {
     item.remove()
 })
 
@@ -64,7 +68,7 @@ document.querySelectorAll('button')[1].addEventListener('click', function(){
     notes = []  // reset notes array and future note count
 
     // go through all p elements with id starting note and remove
-    let allNotes = document.querySelectorAll('p')
+    let allNotes = document.querySelectorAll('li')
     if(allNotes) {
         allNotes.forEach(function(note){
             if(note.getAttribute('id').includes('note')){
@@ -86,7 +90,7 @@ function addNote() {
             return
         } else {
             console.log('You need to enter at least something')
-            const newElement = document.createElement('p')
+            const newElement = document.createElement('li')
             newElement.textContent = 'You need to enter at least something.'
             newElement.setAttribute('id', 'error0')
             document.querySelector('h1').insertAdjacentElement("afterend", newElement)
@@ -103,11 +107,11 @@ function addNote() {
 
         let newValue = {title:'title', body:text}
         notes.push(newValue)
-        const newElement = document.createElement('p')
+        const newElement = document.createElement('li')
         newElement.textContent = newValue.body
         const identifier = `note${notes.length}`
         newElement.setAttribute('id', identifier)
-        document.querySelector('body').appendChild(newElement)
+        document.querySelector('ul').appendChild(newElement)
     }
 }
 
@@ -133,7 +137,7 @@ document.getElementById('input1').addEventListener('input', function(element){
 })
 
 const reDisplayNotes = function(filteredNotes){
-    let allNotes = document.querySelectorAll('p')
+    let allNotes = document.querySelectorAll('li')
     
     if(allNotes) {
         allNotes.forEach(function(note){
@@ -144,10 +148,10 @@ const reDisplayNotes = function(filteredNotes){
     }
 
     filteredNotes.forEach(function(note, index){
-        const newElement = document.createElement('p')
+        const newElement = document.createElement('li')
         newElement.textContent = note.body
         const identifier = `note${index}`
         newElement.setAttribute('id', identifier)
-        document.querySelector('body').appendChild(newElement)
+        document.querySelector('ul').appendChild(newElement)
     })
 }
