@@ -108,7 +108,7 @@ function addNote() {
         let newValue = {title:'title', body:text}
         notes.push(newValue)
 
-        createNotes([newValue])
+        createNotes([newValue], notes.length-1)
     }
 }
 
@@ -150,7 +150,7 @@ const clearNotesFromDisplay = function(){
     }
 }
 
-const createNotes = function(notes) {
+const createNotes = function(notes, altIndex) {
     notes.forEach(function(note, index){
         const newElement = document.createElement('li')
 
@@ -161,7 +161,12 @@ const createNotes = function(notes) {
 
         const text = note.body
         newElement.appendChild(document.createTextNode(text))
-        const identifier = `note${index}`
+        const identifier
+        if(altIndex){
+            identifier = altIndex
+        } else {
+            identifier = `note${index}`
+        }
         newElement.setAttribute('id', identifier)
         document.querySelector('ul').appendChild(newElement)
     })
