@@ -113,8 +113,8 @@ function addNote() {
     }
 }
 
-//event listener for input field for filtering notes field
-document.getElementById('input1').addEventListener('keypress', function(key){
+//event listener for input field for filtering notes field - best to use input for monitoring all changes
+document.getElementById('input1').addEventListener('input', function(key){
     // for any keypress
     // console.log(`${this.value}${key.key}`)  // get value before event and the keypressed for whole word in input field (could select outside this field though)
 
