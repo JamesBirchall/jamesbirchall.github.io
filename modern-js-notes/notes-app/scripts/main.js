@@ -153,6 +153,13 @@ const clearNotesFromDisplay = function(){
 const createNotes = function(notes) {
     notes.forEach(function(note, index){
         const newElement = document.createElement('li')
+
+        const checkboxElement = document.createElement('input')
+        checkboxElement.type = 'checkbox'
+        checkboxElement.name = 'done'
+        checkboxElement.value = true
+        newElement.append(checkboxElement)
+
         newElement.textContent = note.body
         const identifier = `note${index}`
         newElement.setAttribute('id', identifier)
