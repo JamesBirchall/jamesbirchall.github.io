@@ -129,5 +129,6 @@ renderNotes(notes, filters)
 
 //event listener for input field for filtering notes field - best to use input for monitoring all changes
 document.getElementById('input1').addEventListener('input', function(element){
+    filters.searchText = element.target.value
     renderNotes(notes, filters)
 })
