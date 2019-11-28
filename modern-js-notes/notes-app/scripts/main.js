@@ -161,7 +161,7 @@ const createNotes = function(notes, altIndex) {
 
         const text = note.body
         newElement.appendChild(document.createTextNode(text))
-        const identifier = 0
+        let identifier = 0
         if(altIndex){
             identifier = altIndex
         } else {
