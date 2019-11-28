@@ -118,7 +118,7 @@ const filters= {
 const renderNotes = function(notes, filters){
     const filterNotes = notes.filter(function(note){
         let noteBodyLowerCase = note.body.toLowerCase()
-        let filterLowerCase = filters.toLowerCase()
+        let filterLowerCase = filters.searchText.toLowerCase()
 
         return noteBodyLowerCase.includes(filterLowerCase)
     })
