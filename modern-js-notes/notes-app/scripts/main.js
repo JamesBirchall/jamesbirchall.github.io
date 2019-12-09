@@ -105,7 +105,7 @@ function addNote() {
 
         input.value = ''
 
-        let newValue = {title:'title', body:text}
+        let newValue = {title:'title', body:text, dateCreated: Date.now()}
         notes.push(newValue)
 
         createNotes([newValue], notes.length)
@@ -124,7 +124,8 @@ const renderNotes = function(notes, filters){
 
         return noteBodyLowerCase.includes(filterLowerCase)
     })
-
+    
+    var sortedNotes = filteredNotes
     // sorting now based on filter.sortOrder selection
     switch(filters.sortOrder) {
     case "last-edited":
@@ -132,6 +133,14 @@ const renderNotes = function(notes, filters){
         break
     case "recent-created":
         console.log('sort by recent-created')
+        sortedNotes = sortedNotes.sort(function (a, b) {
+            if(a.dateCreated >= b.dateCreated) {
+                return a
+            } else {
+                return b
+            }
+        })
+        console.log(sortedNotes)
         break
     case "a-z":
         console.log('sort by a-z')
@@ -140,7 +149,7 @@ const renderNotes = function(notes, filters){
         console.log('no sorting going on')
     }
         
-    reDisplayNotes(filteredNotes)
+    reDisplayNotes(sortedNotes)
 }
 
 //event listener for input field for filtering notes field - best to use input for monitoring all changes, also detects backspaces etc
