@@ -135,7 +135,7 @@ const renderNotes = function(notes, filters){
         console.log('sort by last-created')
         console.log(sortedNotes)
         sortedNotes = filteredNotes.sort(function (a, b) {
-            return a.dateCreated.valueOf() - b.dateCreated.valueOf()
+            return b.dateCreated.valueOf() - a.dateCreated.valueOf()
         })
         console.log(sortedNotes)
         break
