@@ -125,7 +125,7 @@ const renderNotes = function(notes, filters){
         return noteBodyLowerCase.includes(filterLowerCase)
     })
     
-    var sortedNotes = filteredNotes
+    var sortedNotes = null
     // sorting now based on filter.sortOrder selection
     switch(filters.sortOrder) {
     case "last-edited":
@@ -134,8 +134,8 @@ const renderNotes = function(notes, filters){
     case "last-created":
         console.log('sort by last-created')
         console.log(sortedNotes)
-        sortedNotes.sort(function (a, b) {
-            return b - a
+        sortedNotes = filteredNotes.sort(function (a, b) {
+            return a - b
         })
         console.log(sortedNotes)
         break
@@ -144,8 +144,10 @@ const renderNotes = function(notes, filters){
         break
     default:
         console.log('no sorting going on')
+        sortedNotes = filteredNotes
     }
-        
+    
+
     reDisplayNotes(sortedNotes)
 }
 
