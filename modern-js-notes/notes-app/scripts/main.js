@@ -135,9 +135,9 @@ const renderNotes = function(notes, filters){
         console.log('sort by recent-created')
         sortedNotes = sortedNotes.sort(function (a, b) {
             if(a.dateCreated >= b.dateCreated) {
-                return a
-            } else {
                 return b
+            } else {
+                return a
             }
         })
         console.log(sortedNotes)
