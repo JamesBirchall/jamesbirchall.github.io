@@ -113,7 +113,7 @@ function addNote() {
 }
 
 const filters= {
-    searchText : ''
+    searchText : '',
     sortOrder: 'none'
 }
 
