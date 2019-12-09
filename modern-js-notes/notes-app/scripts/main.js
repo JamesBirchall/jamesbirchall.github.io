@@ -114,6 +114,7 @@ function addNote() {
 
 const filters= {
     searchText : ''
+    sortOrder: 'none'
 }
 
 const renderNotes = function(notes, filters){
@@ -123,7 +124,22 @@ const renderNotes = function(notes, filters){
 
         return noteBodyLowerCase.includes(filterLowerCase)
     })
-    
+
+    // sorting now based on filter.sortOrder selection
+    switch(filters.sortOrder) {
+    case "last-edited":
+        console.log('sort by lasted-edited')
+        break
+    case "recent-created":
+        console.log('sort by recent-created')
+        break
+    case "a-z":
+        console.log('sort by a-z')
+        break
+    default:
+        console.log('no sorting going on')
+    }
+        
     reDisplayNotes(filteredNotes)
 }
 
@@ -174,5 +190,7 @@ const createNotes = function(notes, altIndex) {
 }
 
 document.getElementById('filter-by').addEventListener('change', function(event){
-    console.log(event.target.value)
+    // console.log(event.target.value)
+    filters.sortOrder = event.target.value
+    renderNotes(notes, filters)
 })
