@@ -172,3 +172,7 @@ const createNotes = function(notes, altIndex) {
         document.querySelector('ul').appendChild(newElement)
     })
 }
+
+document.getElementById('filter-by').addEventListener('change', function(event){
+    console.log(event.target.value)
+})
