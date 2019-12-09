@@ -133,7 +133,7 @@ const renderNotes = function(notes, filters){
         break
     case "last-created":
         console.log('sort by last-created')
-        sortedNotes = sortedNotes.sort(function (a, b) {
+        sortedNotes.sort(function (a, b) {
             if(a.dateCreated >= b.dateCreated) {
                 return b
             } else {
