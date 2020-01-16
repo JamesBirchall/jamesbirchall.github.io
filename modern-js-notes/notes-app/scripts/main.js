@@ -1,5 +1,5 @@
 let header1 = document.getElementById('header1')
-header1.innerText = 'Notes App Basics'
+header1.innerText = 'Notes'
 
 // DOM - Document Object Model manipulation
 
@@ -110,6 +110,8 @@ function addNote() {
 
         createNotes([newValue], notes.length)
     }
+
+    renderNotes(notes, filters) // re-draw because of filters/sorting order
 }
 
 const filters= {
@@ -124,6 +126,9 @@ const renderNotes = function(notes, filters){
 
         return noteBodyLowerCase.includes(filterLowerCase)
     })
+
+    console.log('Pre Sort recent...')
+    console.log(filteredNotes)
     
     // sorting now based on filter.sortOrder selection
     switch(filters.sortOrder) {
@@ -132,11 +137,11 @@ const renderNotes = function(notes, filters){
         break
     case "last-created":
         console.log('sort by last-created')
-        console.log(sortedNotes)
-        filteredNotes.sort(function (a, b) {
-            return b.dateCreated.valueOf() - a.dateCreated.valueOf()
+        // use sort function on the list of filteredNotes
+        // put newest (greatest lastCreated date) first
+        filteredNotes.sort(function(a,b) {
+            return b.dateCreated - a.dateCreated
         })
-        console.log(sortedNotes)
         break
     case "a-z":
         console.log('sort by a-z')
@@ -145,6 +150,8 @@ const renderNotes = function(notes, filters){
         console.log('no sorting going on')
     }
     
+    console.log('Post Sort recent...')
+    console.log(filteredNotes)
 
     reDisplayNotes(filteredNotes)
 }
@@ -193,6 +200,7 @@ const createNotes = function(notes, altIndex) {
         newElement.setAttribute('id', identifier)
         document.querySelector('ul').appendChild(newElement)
     })
+    
 }
 
 document.getElementById('filter-by').addEventListener('change', function(event){
