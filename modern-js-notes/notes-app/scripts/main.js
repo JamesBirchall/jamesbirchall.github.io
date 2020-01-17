@@ -145,6 +145,16 @@ const renderNotes = function(notes, filters){
         break
     case "a-z":
         console.log('sort by a-z')
+
+        filteredNotes.sort(function(a,b) {
+            if (a.body > b.body) {
+                return 1
+            }
+            if (b.body > a.body) {
+                return -1
+            }
+            return 0
+        })
         break
     default:
         console.log('no sorting going on')
