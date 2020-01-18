@@ -51,6 +51,14 @@ let notes = [
 //     document.querySelector('body').appendChild(newElement)
 // })
 
+function saveNotesToLocalStorage() {
+    localStorage.setItem('notes', JSON.stringify(notes))
+}
+
+function removeNotesFromLocalStorage() {
+    localStorage.removeItem('notes')
+}
+
 // event listener for the button
 document.querySelector('button').addEventListener('click', function(){
     addNote()
@@ -78,6 +86,8 @@ document.querySelectorAll('button')[1].addEventListener('click', function(){
     }
 
     document.getElementById('input1').value = ''
+
+    removeNotesFromLocalStorage()
 })
 
 function addNote() {
@@ -112,6 +122,8 @@ function addNote() {
     }
 
     renderNotes(notes, filters) // re-draw because of filters/sorting order
+
+    saveNotesToLocalStorage()
 }
 
 const filters= {
@@ -126,17 +138,12 @@ const renderNotes = function(notes, filters){
 
         return noteBodyLowerCase.includes(filterLowerCase)
     })
-
-    console.log('Pre Sort recent...')
-    console.log(filteredNotes)
     
     // sorting now based on filter.sortOrder selection
     switch(filters.sortOrder) {
     case "last-edited":
-        console.log('sort by lasted-edited')
         break
     case "last-created":
-        console.log('sort by last-created')
         // use sort function on the list of filteredNotes
         // put newest (greatest lastCreated date) first
         filteredNotes.sort(function(a,b) {
@@ -144,7 +151,6 @@ const renderNotes = function(notes, filters){
         })
         break
     case "a-z":
-        console.log('sort by a-z')
 
         filteredNotes.sort(function(a,b) {
             if (a.body > b.body) {
@@ -157,11 +163,8 @@ const renderNotes = function(notes, filters){
         })
         break
     default:
-        console.log('no sorting going on')
+        break
     }
-    
-    console.log('Post Sort recent...')
-    console.log(filteredNotes)
 
     reDisplayNotes(filteredNotes)
 }
@@ -218,3 +221,23 @@ document.getElementById('filter-by').addEventListener('change', function(event){
     filters.sortOrder = event.target.value
     renderNotes(notes, filters)
 })
+
+// CRUD - create read update delete
+// localStorage can use all these operations, JSON to stringify objects
+// Javascript Object Notation can be stringified and parsed back to JSON via JSON functions
+// const user = {
+//     name: 'James',
+//     age: 32
+// }
+
+// const userJSON = JSON.stringify(user) // a string rep comes back in JSON
+// console.log(userJSON)
+// const userJSONParsed = JSON.parse(userJSON)
+// console.log(userJSONParsed)
+
+// check for existing saved notes
+const notesJSON = localStorage.getItem('notes')
+if(notesJSON) {
+    notes = JSON.parse(notesJSON)
+    renderNotes(notes, filters)
+}
