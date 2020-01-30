@@ -1,40 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-    <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/skeleton.css">
+    <link
+      href="//fonts.googleapis.com/css?family=Raleway:400,300,600"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/skeleton.css" />
 
-    <title>Notes App V2</title>
-</head>
-<body>
+    <title>Notes App v2</title>
+  </head>
+  <body>
     <div class="container">
-    <h1 id="header1">Something</h1>
-    <p>You won't see this sentence if running JS.</p>
-    <p>or this sentence if running JS.</p>
-    <p>or this final sentence if running JS.</p>
+      <h1 id="header1">Something</h1>
+      <p>You won't see this sentence if running JS.</p>
+      <p>or this sentence if running JS.</p>
+      <p>or this final sentence if running JS.</p>
 
-    <input id="input1" type="text" placeholder="Filter notes here...">
-    <select name="order-by" id="filter-by">
+      <input id="input1" type="text" placeholder="Filter notes here..." />
+      <select name="order-by" id="filter-by">
         <option value="none">...</option>
         <option value="last-created">Sort by recent created</option>
         <option value="a-z">Sort A to Z</option>
-    </select>
-    <br>
-    <input id="input0" type="text" placeholder="Add a new note here..."><br>
+      </select>
+      <br />
+      <input
+        id="input0"
+        type="text"
+        placeholder="Add a new note here..."
+      /><br />
 
-    <button>Add Note</button>
-    <button>Remove All Notes</button>
+      <button>Add Note</button>
+      <button>Remove All Notes</button>
 
-    <ul id="notes">
+      <ul id="notes">
         <li>You now Won't see this if JS is running</li>
-    </ul>
+      </ul>
     </div>
     <script src="./scripts/notes-functions.js"></script>
+    <script src="./scripts/notes-listeners.js"></script>
     <script src="./scripts/main.js"></script>
-</body>
+  </body>
 </html>
