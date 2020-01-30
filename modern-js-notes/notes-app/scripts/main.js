@@ -1,5 +1,5 @@
-let header1 = document.getElementById('header1')
-header1.innerText = 'Notes'
+let header1 = document.getElementById("header1")
+header1.innerText = "Notes"
 
 // DOM - Document Object Model manipulation
 
@@ -9,14 +9,14 @@ header1.innerText = 'Notes'
 // paragraph.remove()
 
 // delete all element <p> tags
-const paragraphs = document.querySelectorAll('p')
+const paragraphs = document.querySelectorAll("p")
 paragraphs.forEach(function(item) {
-    item.remove()
+  item.remove()
 })
 
-const listItems = document.querySelectorAll('li')
+const listItems = document.querySelectorAll("li")
 listItems.forEach(function(item) {
-    item.remove()
+  item.remove()
 })
 
 // adding elements to DOM in 3 steps (create element, update contents, put it somewhere)
@@ -25,25 +25,7 @@ listItems.forEach(function(item) {
 // newElement.textContent = 'An added new element from JS'
 // document.querySelector('body').appendChild(newElement)
 
-let notes = [
-    // {},
-    // {
-    //     title: 'Note 4',
-    //     body: 'Some body text for this 4th note'
-    // },
-    // {
-    //     title: 'note 2',
-    //     body: 'This Person is going to be good 2nd'
-    // },
-    // {
-    //     title: 'Note 3 for a Person',
-    //     body: 'Some body text for this note 3'
-    // },
-    // {
-    //     title: 'Note 1',
-    //     body: 'Have found a person in here 1st'
-    // }
-]
+const notes = getNotesInLocalStorage()
 
 // notes.forEach(function(note, index){
 //     const newElement = document.createElement('p')
@@ -52,192 +34,171 @@ let notes = [
 // })
 
 function saveNotesToLocalStorage() {
-    localStorage.setItem('notes', JSON.stringify(notes))
+  localStorage.setItem("notes", JSON.stringify(notes))
 }
 
 function removeNotesFromLocalStorage() {
-    localStorage.removeItem('notes')
+  localStorage.removeItem("notes")
 }
 
 // event listener for the button
-document.querySelector('button').addEventListener('click', function(){
-    addNote()
+document.querySelector("button").addEventListener("click", function() {
+  addNote()
 })
 
 //event listener for input field for adding note text
-document.getElementById('input0').addEventListener('keypress', function(key){
-    if(key.key == 'Enter') {
-        addNote()
-    }
+document.getElementById("input0").addEventListener("keypress", function(key) {
+  if (key.key == "Enter") {
+    addNote()
+  }
 })
 
 // get 2nd button - reset
-document.querySelectorAll('button')[1].addEventListener('click', function(){
-    notes = []  // reset notes array and future note count
+document.querySelectorAll("button")[1].addEventListener("click", function() {
+  notes = [] // reset notes array and future note count
 
-    // go through all p elements with id starting note and remove
-    let allNotes = document.querySelectorAll('li')
-    if(allNotes) {
-        allNotes.forEach(function(note){
-            if(note.getAttribute('id').includes('note')){
-                note.remove()
-            }
-        })
-    }
+  // go through all p elements with id starting note and remove
+  let allNotes = document.querySelectorAll("li")
+  if (allNotes) {
+    allNotes.forEach(function(note) {
+      if (note.getAttribute("id").includes("note")) {
+        note.remove()
+      }
+    })
+  }
 
-    document.getElementById('input1').value = ''
+  document.getElementById("input1").value = ""
 
-    removeNotesFromLocalStorage()
+  removeNotesFromLocalStorage()
 })
 
 function addNote() {
-    let input = document.getElementById('input0')
-    let text = input.value
-    if(text == '') {
-        const errorMessage = document.getElementById('error0')
-        if(errorMessage) {
-            console.log('Message already present')
-            return
-        } else {
-            console.log('You need to enter at least something')
-            const newElement = document.createElement('li')
-            newElement.textContent = 'You need to enter at least something.'
-            newElement.setAttribute('id', 'error0')
-            document.querySelector('h1').insertAdjacentElement("afterend", newElement)
-        }
-
+  let input = document.getElementById("input0")
+  let text = input.value
+  if (text == "") {
+    const errorMessage = document.getElementById("error0")
+    if (errorMessage) {
+      return
     } else {
-        const errorMessage = document.getElementById('error0')
+      const newElement = document.createElement("li")
+      newElement.textContent = "You need to enter at least something."
+      newElement.setAttribute("id", "error0")
+      document.querySelector("h1").insertAdjacentElement("afterend", newElement)
+    }
+  } else {
+    const errorMessage = document.getElementById("error0")
 
-        if(errorMessage) {
-            errorMessage.remove()
-        }
-
-        input.value = ''
-
-        let newValue = {title:'title', body:text, dateCreated: Date.now()}
-        notes.push(newValue)
-
-        createNotes([newValue], notes.length)
+    if (errorMessage) {
+      errorMessage.remove()
     }
 
-    renderNotes(notes, filters) // re-draw because of filters/sorting order
+    input.value = ""
 
-    saveNotesToLocalStorage()
+    let newValue = { title: "title", body: text, dateCreated: Date.now() }
+    notes.push(newValue)
+
+    createNotes([newValue], notes.length)
+  }
+
+  renderNotes(notes, filters) // re-draw because of filters/sorting order
+
+  saveNotesToLocalStorage()
 }
 
-const filters= {
-    searchText : '',
-    sortOrder: 'none'
+const filters = {
+  searchText: "",
+  sortOrder: "none"
 }
 
-const renderNotes = function(notes, filters){
-    const filteredNotes = notes.filter(function(note){
-        let noteBodyLowerCase = note.body.toLowerCase()
-        let filterLowerCase = filters.searchText.toLowerCase()
+const renderNotes = function(notes, filters) {
+  const filteredNotes = notes.filter(function(note) {
+    let noteBodyLowerCase = note.body.toLowerCase()
+    let filterLowerCase = filters.searchText.toLowerCase()
 
-        return noteBodyLowerCase.includes(filterLowerCase)
-    })
-    
-    // sorting now based on filter.sortOrder selection
-    switch(filters.sortOrder) {
+    return noteBodyLowerCase.includes(filterLowerCase)
+  })
+
+  // sorting now based on filter.sortOrder selection
+  switch (filters.sortOrder) {
     case "last-edited":
-        break
+      break
     case "last-created":
-        // use sort function on the list of filteredNotes
-        // put newest (greatest lastCreated date) first
-        filteredNotes.sort(function(a,b) {
-            return b.dateCreated - a.dateCreated
-        })
-        break
+      // use sort function on the list of filteredNotes
+      // put newest (greatest lastCreated date) first
+      filteredNotes.sort(function(a, b) {
+        return b.dateCreated - a.dateCreated
+      })
+      break
     case "a-z":
-
-        filteredNotes.sort(function(a,b) {
-            if (a.body > b.body) {
-                return 1
-            }
-            if (b.body > a.body) {
-                return -1
-            }
-            return 0
-        })
-        break
+      filteredNotes.sort(function(a, b) {
+        if (a.body > b.body) {
+          return 1
+        }
+        if (b.body > a.body) {
+          return -1
+        }
+        return 0
+      })
+      break
     default:
-        break
-    }
+      break
+  }
 
-    reDisplayNotes(filteredNotes)
+  reDisplayNotes(filteredNotes)
 }
 
 //event listener for input field for filtering notes field - best to use input for monitoring all changes, also detects backspaces etc
-document.getElementById('input1').addEventListener('input', function(element){
-    filters.searchText = element.target.value
-    renderNotes(notes, filters)
+document.getElementById("input1").addEventListener("input", function(element) {
+  filters.searchText = element.target.value
+  renderNotes(notes, filters)
 })
 
-const reDisplayNotes = function(filteredNotes){
-    clearNotesFromDisplay()
-    createNotes(filteredNotes)
+const reDisplayNotes = function(filteredNotes) {
+  clearNotesFromDisplay()
+  createNotes(filteredNotes)
 }
 
-const clearNotesFromDisplay = function(){
-    let allNotes = document.querySelectorAll('li')
-    
-    if(allNotes) {
-        allNotes.forEach(function(note){
-            if(note.getAttribute('id').includes('note')){
-                note.remove()
-            }
-        })
-    }
+const clearNotesFromDisplay = function() {
+  let allNotes = document.querySelectorAll("li")
+
+  if (allNotes) {
+    allNotes.forEach(function(note) {
+      if (note.getAttribute("id").includes("note")) {
+        note.remove()
+      }
+    })
+  }
 }
 
 const createNotes = function(notes, altIndex) {
-    notes.forEach(function(note, index){
-        const newElement = document.createElement('li')
+  notes.forEach(function(note, index) {
+    const newElement = document.createElement("li")
 
-        // how to create checkbox element and provide
-        // const checkboxElement = document.createElement('input')
-        // checkboxElement.type = 'checkbox'
-        // checkboxElement.value = true
-        // newElement.appendChild(checkboxElement)
+    // how to create checkbox element and provide
+    // const checkboxElement = document.createElement('input')
+    // checkboxElement.type = 'checkbox'
+    // checkboxElement.value = true
+    // newElement.appendChild(checkboxElement)
 
-        const text = note.body
-        newElement.appendChild(document.createTextNode(text))
-        let identifier = 0
-        if(altIndex){
-            identifier = `note${altIndex}`
-        } else {
-            identifier = `note${index}`
-        }
-        newElement.setAttribute('id', identifier)
-        document.querySelector('ul').appendChild(newElement)
-    })
-    
+    const text = note.body
+    newElement.appendChild(document.createTextNode(text))
+    let identifier = 0
+    if (altIndex) {
+      identifier = `note${altIndex}`
+    } else {
+      identifier = `note${index}`
+    }
+    newElement.setAttribute("id", identifier)
+    document.querySelector("ul").appendChild(newElement)
+  })
 }
 
-document.getElementById('filter-by').addEventListener('change', function(event){
+document
+  .getElementById("filter-by")
+  .addEventListener("change", function(event) {
     // console.log(event.target.value)
     filters.sortOrder = event.target.value
     renderNotes(notes, filters)
-})
+  })
 
-// CRUD - create read update delete
-// localStorage can use all these operations, JSON to stringify objects
-// Javascript Object Notation can be stringified and parsed back to JSON via JSON functions
-// const user = {
-//     name: 'James',
-//     age: 32
-// }
-
-// const userJSON = JSON.stringify(user) // a string rep comes back in JSON
-// console.log(userJSON)
-// const userJSONParsed = JSON.parse(userJSON)
-// console.log(userJSONParsed)
-
-// check for existing saved notes
-const notesJSON = localStorage.getItem('notes')
-if(notesJSON) {
-    notes = JSON.parse(notesJSON)
-    renderNotes(notes, filters)
-}
+renderNotes(notes, filters)
