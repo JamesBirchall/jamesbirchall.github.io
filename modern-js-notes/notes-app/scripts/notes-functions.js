@@ -20,4 +20,5 @@ function removeNotesFromLocalStorage() {
 
 function clearNotesArray() {
   window.notes = [] // reset notes array and future note count
+  removeNotesFromLocalStorage()
 }

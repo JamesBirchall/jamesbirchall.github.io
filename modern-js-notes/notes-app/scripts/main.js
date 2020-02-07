@@ -113,6 +113,10 @@ const clearNotesFromDisplay = function() {
 const createNotes = function(notes, altIndex) {
   notes.forEach(function(note, index) {
     const newElement = document.createElement("li")
+    const divElement = document.createElement("span")
+    const button = document.createElement("button")
+
+    button.textContent = "x"
 
     // how to create checkbox element and provide
     // const checkboxElement = document.createElement('input')
@@ -121,7 +125,7 @@ const createNotes = function(notes, altIndex) {
     // newElement.appendChild(checkboxElement)
 
     const text = note.body
-    newElement.appendChild(document.createTextNode(text))
+    divElement.appendChild(document.createTextNode(text))
     let identifier = 0
     if (altIndex) {
       identifier = `note${altIndex}`
@@ -129,6 +133,9 @@ const createNotes = function(notes, altIndex) {
       identifier = `note${index}`
     }
     newElement.setAttribute("id", identifier)
+
+    newElement.appendChild(button)
+    newElement.appendChild(divElement)
     document.querySelector("ul").appendChild(newElement)
   })
 }

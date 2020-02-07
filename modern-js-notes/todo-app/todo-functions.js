@@ -33,16 +33,15 @@ const renderTodos = function(todos, filters) {
     return !todo.completed
   })
 
-  generateTodoDOM(incompleteTodos, filteredTodos)
+  document.querySelector("#todos").innerHTML = ""
+
+  generateSummaryDOM(incompleteTodos)
+  generateTodosDOM(incompleteTodos, filteredTodos)
 }
 
 // Get the DOM elements for an individual note
 // generateTodoDOM - DONE!!
-const generateTodoDOM = function(incompleteTodos, filteredTodos) {
-  document.querySelector("#todos").innerHTML = ""
-
-  generateSummaryDOM(incompleteTodos)
-
+const generateTodosDOM = function(incompleteTodos, filteredTodos) {
   filteredTodos.forEach(function(todo) {
     const p = document.createElement("p")
     p.textContent = todo.text
