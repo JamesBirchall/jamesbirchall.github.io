@@ -39,20 +39,33 @@ const renderTodos = function(todos, filters) {
   generateTodosDOM(incompleteTodos, filteredTodos)
 }
 
-// Get the DOM elements for an individual note
-// generateTodoDOM - DONE!!
-const generateTodosDOM = function(incompleteTodos, filteredTodos) {
-  filteredTodos.forEach(function(todo) {
-    const p = document.createElement("p")
-    p.textContent = todo.text
-    document.querySelector("#todos").appendChild(p)
-  })
-}
-
 // Get the DOM elements for a list summary
 // generateSummaryDOM
 const generateSummaryDOM = function(incompleteTodos) {
   const summary = document.createElement("h2")
   summary.textContent = `You have ${incompleteTodos.length} todos left`
   document.querySelector("#todos").appendChild(summary)
+}
+
+// Get the DOM elements for an individual note
+// generateTodoDOM - DONE!!
+const generateTodosDOM = function(incompleteTodos, filteredTodos) {
+  filteredTodos.forEach(function(todo) {
+    const divElement = document.createElement("div")
+    const paraElement = document.createElement("span")
+
+    const checkboxElement = document.createElement("input")
+    checkboxElement.setAttribute("type", "checkbox")
+    checkboxElement.checked = todo.completed
+
+    const deleteButton = document.createElement("button")
+    deleteButton.textContent = "x"
+
+    paraElement.textContent = todo.text
+    let rootDiv = document.querySelector("#todos")
+    divElement.appendChild(checkboxElement)
+    divElement.appendChild(paraElement)
+    divElement.appendChild(deleteButton)
+    rootDiv.appendChild(divElement)
+  })
 }

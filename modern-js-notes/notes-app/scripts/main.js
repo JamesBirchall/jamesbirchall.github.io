@@ -113,16 +113,11 @@ const clearNotesFromDisplay = function() {
 const createNotes = function(notes, altIndex) {
   notes.forEach(function(note, index) {
     const newElement = document.createElement("li")
+
     const divElement = document.createElement("span")
+
     const button = document.createElement("button")
-
     button.textContent = "x"
-
-    // how to create checkbox element and provide
-    // const checkboxElement = document.createElement('input')
-    // checkboxElement.type = 'checkbox'
-    // checkboxElement.value = true
-    // newElement.appendChild(checkboxElement)
 
     const text = note.body
     divElement.appendChild(document.createTextNode(text))
