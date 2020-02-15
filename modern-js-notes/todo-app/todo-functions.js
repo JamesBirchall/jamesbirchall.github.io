@@ -57,9 +57,21 @@ const generateTodosDOM = function(incompleteTodos, filteredTodos) {
         const checkboxElement = document.createElement('input')
         checkboxElement.setAttribute('type', 'checkbox')
         checkboxElement.checked = todo.completed
+        checkboxElement.addEventListener('change', function() {
+            changeCompletedStatus(todo.id)
+            saveTodos(todos)
+            renderTodos(todos, filters)
+        })
 
         const deleteButton = document.createElement('button')
         deleteButton.textContent = 'x'
+        deleteButton.addEventListener('click', function() {
+            // remove our todo
+            // console.log(todo.id)
+            removeTodo(todo.id)
+            saveTodos(todos)
+            renderTodos(todos, filters)
+        })
 
         paraElement.textContent = todo.text
         let rootDiv = document.querySelector('#todos')
@@ -69,4 +81,28 @@ const generateTodosDOM = function(incompleteTodos, filteredTodos) {
         divElement.setAttribute('id', todo.id)
         rootDiv.appendChild(divElement)
     })
+}
+
+const removeTodo = function(id) {
+    const todoIndex = findIndexOfExistingObject(id)
+
+    if (todoIndex > -1) {
+        todos.splice(todoIndex, 1)
+    }
+}
+
+const changeCompletedStatus = function(id) {
+    const todoIndex = findIndexOfExistingObject(id)
+
+    if (todoIndex > -1) {
+        todos[todoIndex].completed = !todos[todoIndex].completed
+    }
+}
+
+const findIndexOfExistingObject = function(id) {
+    const todoIndex = todos.findIndex(function(todo) {
+        return todo.id === id
+    })
+
+    return todoIndex
 }
