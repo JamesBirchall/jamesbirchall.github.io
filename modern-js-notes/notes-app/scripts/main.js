@@ -14,7 +14,7 @@ listItems.forEach(function(item) {
 })
 
 // setup notes if available locally
-const notes = getNotesInLocalStorage()
+let notes = getNotesInLocalStorage()
 
 // filter settings for viewing notes with
 const filters = {
@@ -157,3 +157,11 @@ const createNotes = function(notes, altIndex) {
 }
 
 renderNotes(notes, filters)
+
+window.addEventListener('storage', function(e) {
+    if (e.key === 'notes') {
+        notes = JSON.parse(e.newValue)
+        console.log(notes)
+        renderNotes(notes, filters)
+    }
+})

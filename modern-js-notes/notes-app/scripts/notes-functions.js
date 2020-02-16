@@ -4,7 +4,7 @@
 
 // check for existing notes saved in localStorage and return string
 function getNotesInLocalStorage() {
-    const notesJSON = sessionStorage.getItem('notes')
+    const notesJSON = localStorage.getItem('notes')
     if (notesJSON) {
         return JSON.parse(notesJSON)
     } else {
@@ -14,12 +14,12 @@ function getNotesInLocalStorage() {
 
 // save notes to storage
 function saveNotesToLocalStorage() {
-    sessionStorage.setItem('notes', JSON.stringify(notes))
+    localStorage.setItem('notes', JSON.stringify(notes))
 }
 
 // remove notes from storage
 function removeNotesFromLocalStorage() {
-    sessionStorage.removeItem('notes')
+    localStorage.removeItem('notes')
 }
 
 function clearNotesArray() {
