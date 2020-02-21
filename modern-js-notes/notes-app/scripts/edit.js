@@ -12,6 +12,14 @@ if (index > -1) {
     const note = notes[index]
     titleElement.value = note.title
     bodyElement.value = note.body
+
+    // set last edited value
+    const lastEditedSpan = document.createElement('span')
+    const lastUpdate = moment(note.updatedAt)
+    lastEditedSpan.appendChild(
+        document.createTextNode(`last edited: ${lastUpdate.toNow(true)}`)
+    )
+    document.querySelector('#last-update').append(lastEditedSpan)
 } else {
     console.log('invalid ID, note not found')
     console.log(`${noteID} not in list.`)
@@ -27,12 +35,14 @@ document.querySelector('#remove-note').addEventListener('click', function() {
 titleElement.addEventListener('input', function(e) {
     const note = notes[index]
     note.title = e.target.value
+    note.updatedAt = Date.now()
     saveNotesToLocalStorage()
 })
 
 bodyElement.addEventListener('input', function(e) {
     const note = notes[index]
     note.body = e.target.value
+    note.updatedAt = Date.now()
     saveNotesToLocalStorage()
 })
 

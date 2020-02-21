@@ -48,10 +48,13 @@ function addNote() {
 
         input.value = ''
 
+        let dateCreated = Date.now()
+
         let newValue = {
             title: 'title',
             body: text,
-            dateCreated: Date.now(),
+            dateCreated: dateCreated,
+            updatedAt: dateCreated,
             id: id
         }
         notes.push(newValue)
@@ -165,3 +168,9 @@ window.addEventListener('storage', function(e) {
         renderNotes(notes, filters)
     }
 })
+
+// // Playground for library - moment
+// const now = moment()
+// console.log(now.toString())
+// now.add(5, 'year').subtract(2, 'year')
+// console.log(now.format('DD-MMM-YYYY'))
