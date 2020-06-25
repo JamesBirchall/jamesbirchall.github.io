@@ -5,11 +5,15 @@
 // check for existing notes saved in localStorage and return string
 function getNotesInLocalStorage() {
   const notesJSON = localStorage.getItem("notes")
-  if (notesJSON) {
-    return JSON.parse(notesJSON)
-  } else {
-    return []
-  }
+
+  // tertiary operator example for if else below
+  return notesJSON !== null ? JSON.parse(notesJSON) : []
+
+  // if (notesJSON) {
+  //   return JSON.parse(notesJSON)
+  // } else {
+  //   return []
+  // }
 }
 
 // save notes to storage
@@ -27,7 +31,7 @@ function clearNotesArray() {
   removeNotesFromLocalStorage()
 }
 
-const deleteNote = function(id) {
+const deleteNote = function (id) {
   const notesIndex = findIndexOfExistingObject(id)
 
   if (notesIndex > -1) {
@@ -35,15 +39,14 @@ const deleteNote = function(id) {
   }
 }
 
-const findIndexOfExistingObject = function(id) {
-  const notesIndex = notes.findIndex(function(note) {
-    return note.id === id
-  })
+const findIndexOfExistingObject = function (id) {
+  // converted to arrow function with shorthand return code
+  const notesIndex = notes.findIndex((note) => note.id === id)
 
   return notesIndex
 }
 
-const getNoteIDFromURLIDParameter = function() {
+const getNoteIDFromURLIDParameter = function () {
   const idString = location.href.split("#")[1]
 
   if (idString.startsWith("id=")) {
@@ -52,7 +55,7 @@ const getNoteIDFromURLIDParameter = function() {
   }
 }
 
-const generateLastUpdatedDOM = function(note) {
+const generateLastUpdatedDOM = function (note) {
   const lastEditedSpan = document.querySelector("#last-updated-span")
   if (lastEditedSpan) {
     const lastUpdate = moment(note.updatedAt)
