@@ -1,6 +1,8 @@
 // edit.js
 // logic for the edit view
 
+"use strict"
+
 const noteID = getNoteIDFromURLIDParameter()
 let notes = getNotesInLocalStorage()
 const titleElement = document.querySelector("#note-title")

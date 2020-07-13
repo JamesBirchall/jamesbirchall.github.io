@@ -1,15 +1,17 @@
 // Some abitrary DOM manipulation...
 
+"use strict"
+
 let header1 = document.getElementById("header1")
 header1.innerText = "Notes"
 
 const paragraphs = document.querySelectorAll("p")
-paragraphs.forEach(function(item) {
+paragraphs.forEach(function (item) {
   item.remove()
 })
 
 const listItems = document.querySelectorAll("li")
-listItems.forEach(function(item) {
+listItems.forEach(function (item) {
   item.remove()
 })
 
@@ -19,7 +21,7 @@ let notes = getNotesInLocalStorage()
 // filter settings for viewing notes with
 const filters = {
   searchText: "",
-  sortOrder: "none"
+  sortOrder: "none",
 }
 
 // Validate note string and add
@@ -53,7 +55,7 @@ function addNote() {
       body: text,
       dateCreated: dateCreated,
       updatedAt: dateCreated,
-      id: id
+      id: id,
     }
     notes.push(newValue)
 
@@ -66,8 +68,8 @@ function addNote() {
   return id
 }
 
-const renderNotes = function(notes, filters) {
-  const filteredNotes = notes.filter(function(note) {
+const renderNotes = function (notes, filters) {
+  const filteredNotes = notes.filter(function (note) {
     let noteBodyLowerCase = note.body.toLowerCase()
     let filterLowerCase = filters.searchText.toLowerCase()
 
@@ -77,19 +79,19 @@ const renderNotes = function(notes, filters) {
   // sorting now based on filter.sortOrder selection
   switch (filters.sortOrder) {
     case "last-edited":
-      filteredNotes.sort(function(a, b) {
+      filteredNotes.sort(function (a, b) {
         return b.updatedAt - a.updatedAt
       })
       break
     case "last-created":
       // use sort function on the list of filteredNotes
       // put newest (greatest lastCreated date) first
-      filteredNotes.sort(function(a, b) {
+      filteredNotes.sort(function (a, b) {
         return b.dateCreated - a.dateCreated
       })
       break
     case "a-z":
-      filteredNotes.sort(function(a, b) {
+      filteredNotes.sort(function (a, b) {
         const first = String(a.body).toLowerCase()
         const second = String(b.body).toLowerCase()
 
@@ -109,16 +111,16 @@ const renderNotes = function(notes, filters) {
   reDisplayNotes(filteredNotes)
 }
 
-const reDisplayNotes = function(filteredNotes) {
+const reDisplayNotes = function (filteredNotes) {
   clearNotesFromDisplay()
   createNotes(filteredNotes)
 }
 
-const clearNotesFromDisplay = function() {
+const clearNotesFromDisplay = function () {
   let allNotes = document.querySelectorAll("li")
 
   if (allNotes) {
-    allNotes.forEach(function(note) {
+    allNotes.forEach(function (note) {
       if (note.getAttribute("id").includes("note")) {
         note.remove()
       }
@@ -126,15 +128,15 @@ const clearNotesFromDisplay = function() {
   }
 }
 
-const createNotes = function(notes, altIndex) {
-  notes.forEach(function(note, index) {
+const createNotes = function (notes, altIndex) {
+  notes.forEach(function (note, index) {
     const newElement = document.createElement("li")
 
     const divElement = document.createElement("span")
 
     const button = document.createElement("button")
     button.textContent = "x"
-    button.addEventListener("click", function() {
+    button.addEventListener("click", function () {
       deleteNote(note.id)
       saveNotesToLocalStorage()
       notes.splice(index, 1) // remove
@@ -165,7 +167,7 @@ const createNotes = function(notes, altIndex) {
 
 renderNotes(notes, filters)
 
-window.addEventListener("storage", function(e) {
+window.addEventListener("storage", function (e) {
   if (e.key === "notes") {
     notes = JSON.parse(e.newValue)
     console.log(notes)

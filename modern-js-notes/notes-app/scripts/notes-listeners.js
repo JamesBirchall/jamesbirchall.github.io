@@ -1,3 +1,5 @@
+"use strict"
+
 const editViewLocation = "edit.html"
 
 // event listener for the button

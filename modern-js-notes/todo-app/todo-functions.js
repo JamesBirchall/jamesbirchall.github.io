@@ -1,3 +1,5 @@
+"use strict"
+
 const localStorageTodoStore = "todos"
 
 // Fetch existing todos from localStorage
