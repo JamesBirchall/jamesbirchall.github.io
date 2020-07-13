@@ -6,8 +6,13 @@
 function getNotesInLocalStorage() {
   const notesJSON = localStorage.getItem("notes")
 
-  // tertiary operator example for if else below
-  return notesJSON !== null ? JSON.parse(notesJSON) : []
+  try {
+    // tertiary operator example for if else below
+    return notesJSON !== null ? JSON.parse(notesJSON) : [] // blindly passing JSON and if not would cause error / crash, need error handling!
+  } catch (error) {
+    console.log("NotesArrayJSON Parse invalid, resetting")
+    return []
+  }
 
   // if (notesJSON) {
   //   return JSON.parse(notesJSON)

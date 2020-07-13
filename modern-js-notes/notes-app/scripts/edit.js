@@ -7,26 +7,28 @@ const titleElement = document.querySelector("#note-title")
 const bodyElement = document.querySelector("#note-body")
 
 const index = findIndexOfExistingObject(noteID)
-
+console.log("Index is:" + index)
 if (index > -1) {
   const note = notes[index]
   titleElement.value = note.title
   bodyElement.value = note.body
 
   generateLastUpdatedDOM(note)
+  console.log("Route1")
 } else {
   console.log("invalid ID, note not found")
   console.log(`${noteID} not in list.`)
+  console.log("Route1")
   location.assign("./index.html")
 }
 
-document.querySelector("#remove-note").addEventListener("click", function() {
+document.querySelector("#remove-note").addEventListener("click", function () {
   deleteNote(noteID)
   saveNotesToLocalStorage()
   location.assign("./index.html")
 })
 
-titleElement.addEventListener("input", function(e) {
+titleElement.addEventListener("input", function (e) {
   const note = notes[index]
   note.title = e.target.value
   note.updatedAt = Date.now()
@@ -34,7 +36,7 @@ titleElement.addEventListener("input", function(e) {
   saveNotesToLocalStorage()
 })
 
-bodyElement.addEventListener("input", function(e) {
+bodyElement.addEventListener("input", function (e) {
   const note = notes[index]
   note.body = e.target.value
   note.updatedAt = Date.now()
@@ -42,7 +44,7 @@ bodyElement.addEventListener("input", function(e) {
   saveNotesToLocalStorage()
 })
 
-window.addEventListener("storage", function(e) {
+window.addEventListener("storage", function (e) {
   if (e.key === "notes") {
     notes = JSON.parse(e.newValue)
     const index = findIndexOfExistingObject(noteID)
