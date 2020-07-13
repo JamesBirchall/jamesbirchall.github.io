@@ -3,7 +3,7 @@
 let searchConfig = {
   //clientId: "943104600333-b0rruptgea41rlc5gk9aocrgeugk17io.apps.googleusercontent.com",
   clientId:
-    "556284081694-99jq9qge7noregh18vl6cia0pcumb2sv.apps.googleusercontent.com",
+    "943104600333-b0rruptgea41rlc5gk9aocrgeugk17io.apps.googleusercontent.com",
   searchAppId: "searchapplications/22d28475e6f3962fe52fca3916f4eb9a",
 }
 // [END cloud_search_github_tutorial_search_config]
