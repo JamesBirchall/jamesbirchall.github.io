@@ -3,4 +3,5 @@
     "settings": {},
     "editor.formatOnSave": true,
     "prettier.semi": false,
+    "python.formatting.provider": "black",
   }
