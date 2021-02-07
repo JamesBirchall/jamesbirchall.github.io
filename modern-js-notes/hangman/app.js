@@ -1,6 +1,12 @@
 // app.js
 // Birchall 2020
-// Hangman Game
+// Hangman Game 
+
+// HTTP Request - request / response protocol
+// Request - what we want to do
+// Response - what was actually done
+// Request URL http://puzzle.mead.io/puzzle
+// Response = JSON payload and JS Object with key:value pairs
 
 const puzzleElement = document.querySelector("#puzzle")
 const guessesElement = document.querySelector("#guesses")
@@ -25,3 +31,16 @@ async function reloadGame() {
   // reload the page
   window.location.reload()
 }
+
+// Making a HTTP Request
+const request = new XMLHttpRequest()
+request.addEventListener("readystatechange", function (e) {
+  if(e.target.readyState === 4){
+    // console.log(e.target)
+    const data = JSON.parse(e.target.responseText)
+    console.log(data['puzzle'])
+  }
+})
+
+request.open("GET", "http://puzzle.mead.io/puzzle")
+request.send()  // initiate the process to connect/process/return response

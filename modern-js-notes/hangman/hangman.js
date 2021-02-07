@@ -1,5 +1,5 @@
 // hangman.js
-// Birchall 2020
+// Birchall 2020 
 
 "use strict"
 
